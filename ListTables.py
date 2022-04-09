@@ -26,7 +26,6 @@ def printStreamBuffer(fun):
 
     def new_func(*args, buffer=None, **kwargs):
         caller = sys.argv[0].strip()
-        #import pdb; pdb.set_trace()
         if buffer is not None:
             _stdout = sys.stdout
             sys.stdout = _buffer = io.StringIO()
@@ -55,7 +54,7 @@ def underline(title):
     return title+'\n'+''.join(['-' for c in range(len(title))])
     
 def printList(header,data): 
-    # Prints a table of any size without the convenience option of flipping the first two columns.
+    # Prints a table of any size.
     thelist = []
     if isinstance(header[0],tuple):
         header0 = header[0]
@@ -111,16 +110,11 @@ def printTablesSideways(tableHeader, tableCtx, allowedTabLength, tablesPerLine,t
         _side = tuple([[''] for x in range((len(tableHeader)-1)//2)])
         _tableTopHeader = _side+_centerHeader+_side
         
-        #tableBuffer = {} if frameBlock is not None else None
-        #tableBuffer = {}
         tableText = getListDisplayText(
-            #buffer = tableBuffer, 
             header = (multiply(_tableTopHeader,tablesInLine(i),(_block,)), multiply(tableHeader,tablesInLine(i),(_block,)))
             , data = _fullLineTable
             )
         if frameBlock is not None:
-            #print(Stage(tableBuffer.get('value').rstrip(' \n'+_block),frameBlock).stringValue())
-            #import pdb;pdb.set_trace()
             print(Stage(re.sub('\n[\s%s]+\n' % _block, '', tableText).rstrip(),frameBlock).stringValue())
         else:
             print(re.sub('\n[\s%s]+\n' % _block, '', tableText).rstrip())
