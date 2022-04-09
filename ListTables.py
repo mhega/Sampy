@@ -1,3 +1,9 @@
+#**************************************************
+# ListTables class V 1.0
+# Author: Mohamed Hegazy
+# Last updated by Mohamed Hegazy - 4/9/2022
+#**************************************************
+
 import re
 from InfoRecord import Stage
 
@@ -13,7 +19,7 @@ def padding(input,keylength):   # Space padding for uniform display.
     for j in range(maxlength-keylength+5):
         op = op+' '
     return op
-    
+
 def printStreamBuffer(fun):
     import io
     import sys
